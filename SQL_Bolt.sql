@@ -92,6 +92,13 @@ inner join north_american_cities c1 on c.longitude < c1.longitude
 where c1.city = 'Chicago'
 order by c.longitude asc;
 --                     List the two largest cities in Mexico (by population)
-                
+
+SELECT * FROM north_american_cities
+WHERE COUNTRY LIKE "%MEXICO%"
+ORDER BY population DESC LIMIT 2;
                 
 --                     List the third and fourth largest cities (by population) in the United States and their population
+
+SELECT * FROM north_american_cities
+WHERE COUNTRY LIKE "%UNITED STATES%"
+ORDER BY population DESC LIMIT 2 OFFSET 2;
