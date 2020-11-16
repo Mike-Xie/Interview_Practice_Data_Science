@@ -34,9 +34,9 @@ def concatenationsSum(a):
     
     a = [str(i) for i in a]
     print(a)
-    cross_product = [j + k for j in a for k in a]
+    cartesian_product = [j + k for j in a for k in a]
     print(cross_product)  
     # turn back into integers
-    ints = [int(i) for i in cross_product]
+    total = [int(i) for i in cross_product]
     
-    return sum(ints)
+    return sum(total)
