@@ -64,3 +64,34 @@ LIMIT 5;
 SELECT title FROM movies
 ORDER BY title ASC
 LIMIT 5 OFFSET 5;
+
+-- Review 1 — Tasks
+			
+			
+                
+--                     List all the Canadian cities and their populations
+SELECT city, population FROM north_american_cities 
+WHERE country LIKE "canada";
+                
+--                     Order all the cities in the United States by their latitude from north to south
+SELECT city FROM north_american_cities
+WHERE country LIKE "United States"
+ORDER BY latitude;
+                
+--                     List all the cities west of Chicago, ordered from west to east
+-- use sub query to select the cell with Chicago's longitude instead of hard coding
+-- errors out if more than one row with Chicago
+SELECT * FROM north_american_cities
+WHERE longitude > (select longitude from north_american_cities where city = "Chicago")
+ORDER BY longitude ASC;
+
+-- alternate solution with self-join, will create duplicates if Chicago has multiple rows 
+select c.city, c.longitude 
+from north_american_cities c
+inner join north_american_cities c1 on c.longitude < c1.longitude
+where c1.city = 'Chicago'
+order by c.longitude asc;
+--                     List the two largest cities in Mexico (by population)
+                
+                
+--                     List the third and fourth largest cities (by population) in the United States and their population
