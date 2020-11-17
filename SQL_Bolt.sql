@@ -102,3 +102,24 @@ ORDER BY population DESC LIMIT 2;
 SELECT * FROM north_american_cities
 WHERE COUNTRY LIKE "%UNITED STATES%"
 ORDER BY population DESC LIMIT 2 OFFSET 2;
+
+
+-- Exercise 6 — Tasks
+            
+            
+                
+--                     Find the domestic and international sales for each movie
+--                  ✓
+SELECT Domestic_sales, International_sales FROM movies INNER JOIN BoxOffice ON movies.id = BoxOffice.Movie_id
+;
+                
+--                     Show the sales numbers for each movie that did better internationally rather than domestically
+                
+SELECT title, Domestic_sales, International_sales FROM movies INNER JOIN BoxOffice ON movies.id = BoxOffice.Movie_id
+    WHERE International_sales > Domestic_sales
+;                
+--                     List all the movies by their ratings in descending order
+
+SELECT title, rating FROM movies INNER JOIN BoxOffice ON movies.id = BoxOffice.Movie_id
+    ORDER BY Rating DESC
+;
