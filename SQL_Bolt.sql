@@ -123,3 +123,37 @@ SELECT title, Domestic_sales, International_sales FROM movies INNER JOIN BoxOffi
 SELECT title, rating FROM movies INNER JOIN BoxOffice ON movies.id = BoxOffice.Movie_id
     ORDER BY Rating DESC
 ;
+
+
+-- Exercise 7 — Tasks
+            
+            
+                
+--                     Find the list of all buildings that have employees
+--                     Also retrieve the number of for stretch
+SELECT building, COUNT(*)
+FROM employees
+GROUP BY building;
+                
+--                     Find the list of all buildings and their capacity
+SELECT * FROM buildings;
+--                     Find list of all buildings, capacity and number of people in them 
+--                     REPL like environment is super helpful, do it iteratively
+--                     First have select * and make sure join is working, after join
+--                     Treat all as one table, note group by has to be done with building_name,
+--                     Which has more categories than building since some buildings are empty
+--                     And we count building which tells us where an employee is at, not *
+--                     Which would get us 1 instead of 0 for the empty buildings
+
+SELECT building_name, COUNT(building)
+FROM buildings b
+  LEFT JOIN employees e
+    ON b.building_name = e.building
+GROUP BY building_name;
+--                     List all buildings and the distinct employee roles in each building (including empty buildings)
+
+SELECT DISTINCT b.building_name, e.role 
+FROM buildings b
+LEFT JOIN employees e
+ON b.building_name = e.building
+;
