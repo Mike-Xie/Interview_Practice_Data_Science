@@ -176,3 +176,25 @@ WHERE building IS NULL;
 --                     Find distribution of roles by building
 SELECT ROLE, building, count(ROLE) FROM employees
 GROUP BY ROLE, building;
+
+-- Exercise 9 — Tasks
+            
+            
+                
+--                     List all movies and their combined sales in millions of dollars
+--                  ✓
+SELECT Title, 
+(domestic_sales + international_sales) / 1000000 AS total_sales
+FROM movies 
+JOIN Boxoffice ON movies.id = Boxoffice.Movie_id;
+                
+--                     List all movies and their ratings in percent
+SELECT Title, Rating * 10 AS Percentage_Rating
+FROM movies 
+JOIN Boxoffice ON movies.id = Boxoffice.Movie_id;
+                
+--                     List all movies that were released on even number years
+SELECT Title, year
+FROM movies 
+JOIN Boxoffice ON movies.id = Boxoffice.Movie_id
+WHERE year%2 = 0;
