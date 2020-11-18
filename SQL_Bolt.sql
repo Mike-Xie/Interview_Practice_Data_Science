@@ -157,3 +157,22 @@ FROM buildings b
 LEFT JOIN employees e
 ON b.building_name = e.building
 ;
+
+-- Exercise 8 — Tasks
+            
+            
+                
+--                     Find the name and role of all employees who have not been assigned to a building
+--                  ✓
+SELECT * FROM employees
+WHERE building IS NULL;
+                
+--                     Find the names of the buildings that hold no employees
+SELECT * FROM buildings
+LEFT JOIN employees
+ON building_name = building
+WHERE building IS NULL;
+
+--                     Find distribution of roles by building
+SELECT ROLE, building, count(ROLE) FROM employees
+GROUP BY ROLE, building;
